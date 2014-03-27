@@ -1,0 +1,95 @@
+#!/usr/bin/env ruby
+# Deploy Instance, RDS, or security groups to AWS
+# Phillip Mispagel
+# 1.0
+
+USAGE = <<-eos
+usage: deploy [environment] [type] [region] [options]
+              
+              environments: production staging anything
+              types:        instance rds sg user s3
+              regions:      us-west-1 eu-west-1 ap-southeast-2
+              
+              instance options:
+                -n 'instance name'  ['Linux FrontEnd 090']
+                -i ip_address       [0.0.0.0]
+                -s size             [t1.micro m1.small m1.medium m1.large etc]
+                -o operating system [centos windows ubuntu]
+                -k keypair          [global-automation]
+                -g 'sec,groups'     ['spaces okay in groups,but not between']
+                -b 'block options'  ['DeviceName /dev/sdb Ebs.VolumeSize 100']
+
+              rds options:
+                -t type             [postgresql oracle mssql]
+                -i tenant id        [080 090 100]
+                -a application      [wfm ezpulse voice]
+                -d database         [database-name]
+                -u user             [database-user]
+                -p password         [database-password]
+                -g 'sec,groups'     ['spaces okay in groups,but not between']
+
+              sg options:
+                -n 'sg name'        ['443 and 22']
+                -i 'ingress'        ['10.51.0.0/16 443 TCP ROLE-database 5432 ALL']
+                -o 'outgress'       ['10.51.0.0/16 443 TCP ROLE-database 5432 ALL']   
+
+              user options:
+                -u user             [user]
+                -p password         [password]
+                -a application      [wfm,gi2,cimplicity]
+                -s s3 bucket        [s3-bucket-name]
+
+              s3 options:
+                -n 'bucket name'    [s3-frontend-090-ap-southeast-2]
+                -u user             [s3-user]
+eos
+
+
+if ARGV[0].nil? || ARGV[1].nil? || ARGV[2].nil?
+  puts USAGE
+  exit 1
+end
+
+ENVIRONMENT    = ARGV[0].upcase
+TYPE           = ARGV[1].downcase
+REGION         = ARGV[2].downcase
+
+
+require_relative 'config'
+
+CONN   = Fog::Compute.new(provider: 'AWS', aws_access_key_id: AWS_KEY, aws_secret_access_key: AWS_SECRET, region: REGION)
+
+require_relative 'aws_shared'
+require_relative 'aws_options'
+require_relative 'aws_instance'
+require_relative 'aws_rds'
+require_relative 'aws_sg'
+
+
+case TYPE
+
+  when 'instance'
+    if valid_instance_options?
+      i = Instance.new(name: @options[:name], ip: @options[:ip], size: @options[:size], os: @options[:os], security_groups: @options[:security_groups], keypair: @options[:keypair], block: @options[:block])
+      p i.deploy
+    else
+      p 'what?'
+    end
+
+  when 'rds'
+    p "deploying an rds"
+
+  when 'sg'
+    p "adding a security group"
+
+  else
+    # print syntax
+end
+
+
+
+
+
+
+
+
