@@ -54,7 +54,7 @@ case ENVIRONMENT
         exit 1
     end
 
-      when 'PREPROD'
+  when 'PREPROD'
     case REGION
       when 'us-west-1'
         OS['ubuntu']  = 'ami-06320343'
