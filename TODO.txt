@@ -1,0 +1,86 @@
+ - update security groups to be copied between regions and accounts
+
+      1. make scripts use nested hash data structure for config settings between regions
+      2. define functions necessary to make this happen
+      3. some mock up
+
+      get security groups of first location / region pair and save to json
+      run method that uploads them to a different location / region pair
+      redefine AWS in each instance of the command
+      source AWS then destination AWS
+
+
+ - update security groups so user can create a new group or delete a group
+
+create IAM and s3 settings
+    1. create class to make S3 buckets and test it in preprod
+    2. copy down policies of existing airbnb user
+    3. 
+
+
+ - add instance deletion
+
+ - create data bag 
+
+      1. take hostname and role information from spreadsheet
+      2. perform appropraite functions (linux or windows setup)
+      3. bootstrap node
+
+
+ - fix windows domain settings in bios in script
+
+      1. create WFM instance
+      2. Navigate to key that will be added and run script against it until the right settings get specified
+
+
+ - write code to glue deployments together and start bootstrap
+
+ 
+TODO:
+
+1. update sg class to create new empty security group
+2. create s3 bucket
+3. create iam user
+4. generate report with specifics deployment information
+      - output what DNS records to create for RDS
+      - generate data bag
+
+--- manually update dns ---
+
+5. script to bootstrap all instances
+
+#----------------------------
+# deploy steps
+#-----------------------------
+
+manual:
+ 1. create MSSQL users and databases and provide credentials / update DNS
+ 2. generate spreadsheet with information
+ 3. update DNS with new instance records
+
+from spreadsheet:
+ 1. deploy sg - make new sg function
+ 2. deploy rds - done
+ 3. deploy s3 - make new s3 class
+ 4. deploy iam - make new iam class
+ 5. generate report with end points, s3 creds, etc
+
+manual:
+ 6. update DNS glbl database records
+ 5. create data bag with new information
+
+from spreadsheet:
+ 6. deploy instances
+ 7. bootstrap instances
+
+manual:
+ 1. post configuration steps
+
+
+
+ nice haves
+
+  - erb of data bag so scripts can auto populate
+
+  - create powershell script to auto generate MSSQL databases
+

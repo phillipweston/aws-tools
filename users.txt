@@ -1,7 +1,0 @@
-CME     wfm agents    Python script that takes CSV
-WFM     supervisors   SOAP interface to add users and assign to existing roles, Java Python?
-Citrix  supervisors   Powershell script to add Citrix users
-
-GI2     ??
-CIM     ?? 
-
