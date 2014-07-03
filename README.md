@@ -7,9 +7,8 @@ aws-tools
 
 
 
-security groups
+#security groups
 type,action,name
-
 sg,create,other-security-group
  
 s3 buckets
