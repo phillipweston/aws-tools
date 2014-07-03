@@ -7,25 +7,29 @@ aws-tools
 
 
 
-# security groups
+security groups
 type,action,name
+
 sg,create,other-security-group
  
-# s3 buckets
+s3 buckets
 type,action,bucket
+
 s3,create,coredumps-bucket
 s3,create,dbbackup-bucket
  
-# IAM user
+IAM user
 type,action,user
+
 iam,create,s3-user
  
-# RDS
+RDS
 type,action,db_instance_identifier,db_name,allocated_storage,db_instance_class,engine,engine_version,master_username,master_user_password,vpc_security_group_ids,db_subnet_group_name
+
 rds,create,db_instance_orcl,ORCL,100,db.m1.medium,oracle-se1,11.2.0.3.v1,admin,Password_100,"database,other-security-group",gcloud-db-subnet
 rds,create,db_instance_pg,postgres,100,db.m1.medium,postgres,9.3.1,postgres,Password_100,"database,other-security-group",gcloud-db-subnet
  
-# instances
+instances
 type,action,name,ip,size,availability_zone,os,security_groups,keypair,block,hostname
  
 instance,create,Voice VMP,192.168.7.100,m3.large,us-west-1b,centos,"voice,service-client-and-internet,open-to-the-world",automation-key,DeviceName /dev/sda volume_size:8 DeviceName /dev/sdb volume_size:20,vmp-100-001.yourdomain.com
