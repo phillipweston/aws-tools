@@ -6,8 +6,7 @@ aws-tools
 
 
 
-CSV
-===
+
 # security groups
 type,action,name
 sg,create,other-security-group
