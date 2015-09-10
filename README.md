@@ -15,3 +15,5 @@ usage: ./deploy.rb [environment] [location] [tenant_id] [csv]
 See config.rb where you can define VPC, AMIs to use, etc for each arbitrary region.  
 
 Instance and RDS deployments are cleanly done, security group, IAM, and s3 work, but the code is not nimble.
+
+[my link](LINK.md)
