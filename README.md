@@ -1,7 +1,7 @@
 AWS deployment automation
 =========================
 
-1.  Create a CSV with deployment settings (see whoa.csv)
+1.  Create a CSV with deployment settings (see vpc-configuration.csv)
 2.  Run command below:
 
 usage: ./deploy.rb [environment] [location] [tenant_id] [csv]

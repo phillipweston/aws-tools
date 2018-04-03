@@ -25,10 +25,10 @@ TENANT_ID        = ARGV[2]
 csv_file         = ARGV[3]
 
 require_relative 'config'
-require_relative 'aws_shared'
-require_relative 'aws_instance'
-require_relative 'aws_rds'
-# require_relative 'aws_sg'
+require_relative 'resources/aws_shared'
+require_relative 'resources/aws_instance'
+require_relative 'resources/aws_rds'
+require_relative 'resources/aws_sg'
 
 
 CSV.foreach(csv_file) do |row|
