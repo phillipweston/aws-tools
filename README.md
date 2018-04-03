@@ -1,6 +1,8 @@
 AWS deployment automation
 =========================
 
+Written so specs could be written out in Excel for exec types to be able to work with and then easily exported to CSV and run by this program to build the VPC / EC2 instances, RDS, security groups, IAM, S3, etc.
+
 1.  Create a CSV with deployment settings (see vpc-configuration.csv)
 2.  Run command below:
 
